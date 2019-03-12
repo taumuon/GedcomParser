@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taumuon.GedcomParser", "Taumuon.GedcomParser\Taumuon.GedcomParser.csproj", "{5D00F0C8-94BD-4056-962D-DA9DB6AE40C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taumuon.GedcomParser.Benchmark", "Taumuon.GedcomParser.Benchmark\Taumuon.GedcomParser.Benchmark.csproj", "{CD3A7539-A510-44D1-ACE3-518655560494}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taumuon.GedcomParser.Console", "Taumuon.GedcomParser.Console\Taumuon.GedcomParser.Console.csproj", "{CDE8A3B8-4FC3-4C75-A3BC-DAC203880173}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taumuon.GedcomParser.Test", "Taumuon.GedcomParser.Test\Taumuon.GedcomParser.Test.csproj", "{3243478F-2DF4-40EA-8EA6-842A302CAC21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taumuon.GedcomParserSpan", "Taumuon.GedcomParserSpan\Taumuon.GedcomParserSpan.csproj", "{888FE1C6-8D90-4A4E-8315-61353D7293E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taumuon.GedcomParserSpan.Test", "Taumuon.GedcomParserSpan.Test\Taumuon.GedcomParserSpan.Test.csproj", "{0A47E732-8BDE-4642-A54D-2D7F1EF443E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D00F0C8-94BD-4056-962D-DA9DB6AE40C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D00F0C8-94BD-4056-962D-DA9DB6AE40C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D00F0C8-94BD-4056-962D-DA9DB6AE40C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D00F0C8-94BD-4056-962D-DA9DB6AE40C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3A7539-A510-44D1-ACE3-518655560494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3A7539-A510-44D1-ACE3-518655560494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3A7539-A510-44D1-ACE3-518655560494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3A7539-A510-44D1-ACE3-518655560494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDE8A3B8-4FC3-4C75-A3BC-DAC203880173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE8A3B8-4FC3-4C75-A3BC-DAC203880173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE8A3B8-4FC3-4C75-A3BC-DAC203880173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE8A3B8-4FC3-4C75-A3BC-DAC203880173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3243478F-2DF4-40EA-8EA6-842A302CAC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3243478F-2DF4-40EA-8EA6-842A302CAC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3243478F-2DF4-40EA-8EA6-842A302CAC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3243478F-2DF4-40EA-8EA6-842A302CAC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{888FE1C6-8D90-4A4E-8315-61353D7293E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888FE1C6-8D90-4A4E-8315-61353D7293E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888FE1C6-8D90-4A4E-8315-61353D7293E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888FE1C6-8D90-4A4E-8315-61353D7293E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A47E732-8BDE-4642-A54D-2D7F1EF443E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A47E732-8BDE-4642-A54D-2D7F1EF443E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A47E732-8BDE-4642-A54D-2D7F1EF443E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A47E732-8BDE-4642-A54D-2D7F1EF443E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {744A42EB-8760-4ECD-9F18-A1C3727D178F}
+	EndGlobalSection
+EndGlobal

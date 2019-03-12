@@ -1,0 +1,41 @@
+﻿http://genealogy.about.com/library/weekly/aa110100a.htm
+FAMC - family record where individual appears as a child
+FAMS - family records where individual appears as a spouse
+
+http://homepages.rootsweb.ancestry.com/~pmcbride/gedcom/55gctoc.htm
+GEDCOM spec
+Date:
+FROM, TO, ABT, BEF, AFT, BET
+
+www.phpgedview.net/ged551-5.pdf
+Date can be
+CAL - calculated
+EST - estimated e.g. using an algorithm
+ABT - not exact
+
+FROM date
+TO date
+FROM date TO date
+BET date and date
+BEF - before
+AFT - after
+
+1852 = BET 1 JAN 1852 AND 31 DEC 1852
+1852 = BET 1 JAN 1852 AND DEC 1852
+1852 = BET JAN 1852 AND 31 DEC 1852
+1852 = BET JAN 1852 AND DEC 1852
+JAN 1920 = BET 1 JAN 1920 AND 31 JAN 1920
+
+The surname of an individual, if known, is enclosed between two slash (/) characters. The order of the
+name parts should be the order that the person would, by custom of their culture, have used when
+giving it to a recorder.
+
+Is e.g. AFT. also valid?
+
+http://blog.rootsmagic.com/?p=17
+
+Q 1 1847, 1st Quarter 1847, 1st Q 1847, March Quarter 1847, Mar Q 1847
+- not GEDCOM standard, but support anyway?
+
+http://en.wikipedia.org/wiki/GEDCOM
+
