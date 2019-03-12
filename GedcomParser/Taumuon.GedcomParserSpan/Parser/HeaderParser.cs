@@ -34,7 +34,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                     }
                     else if (ParserHelper.Equals(tag, "CHAR"))
                     {
-                        header.GedcomCharacterSet = ParserHelper.GetLineContent(line.LineContent).ToString();
+                        header.GedcomCharacterSet = line.GetLineContent(4).ToString();
                     }
                 }
                 else if (line.Level == 2)
@@ -44,22 +44,22 @@ namespace Taumuon.GedcomParserSpan.Parser
                         var tag = line.GetFirstItem();
                         if (ParserHelper.Equals(tag, "NAME"))
                         {
-                            header.SourceName = ParserHelper.GetLineContent(line.LineContent).ToString();
+                            header.SourceName = line.GetLineContent(4).ToString();
                         }
                         else if (ParserHelper.Equals(tag, "VERS"))
                         {
-                            header.SourceVers = ParserHelper.GetLineContent(line.LineContent).ToString();
+                            header.SourceVers = line.GetLineContent(4).ToString();
                         }
                         else if (ParserHelper.Equals(tag, "CORP"))
                         {
-                            header.SourceCorp = ParserHelper.GetLineContent(line.LineContent).ToString();
+                            header.SourceCorp = line.GetLineContent(4).ToString();
                         }
                     }
                     else if (currentLevel == CurrentLevel.Gedc)
                     {
                         if (ParserHelper.Equals(line.GetFirstItem(), "VERS"))
                         {
-                            header.GedcomVers = ParserHelper.GetLineContent(line.LineContent).ToString();
+                            header.GedcomVers = line.GetLineContent(4).ToString();
                         }
                     }
                 }

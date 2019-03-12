@@ -35,8 +35,6 @@ namespace Taumuon.GedcomParserSpan.Parser
                     break;
                 }
 
-                var lineOriginalContent = line.LineContent;
-
                 var tag = line.GetFirstItem();
                 if (ParserHelper.Equals(tag, "NAME")
                     && individual.LastName == null && individual.FirstNames == null)
@@ -45,20 +43,20 @@ namespace Taumuon.GedcomParserSpan.Parser
                 }
                 else if (ParserHelper.Equals(tag, "SEX"))
                 {
-                    individual.Gender = ParserHelper.Equals(ParserHelper.GetLineContent(line.LineContent), "M") ? Gender.Male : Gender.Female;
+                    individual.Gender = ParserHelper.Equals(line.GetLineContent(3), "M") ? Gender.Male : Gender.Female;
                 }
                 else if (ParserHelper.Equals(tag, "FAMS"))
                 {
-                    individual.FamilyIDSpouse = ParserHelper.ParseID(ParserHelper.GetLineContent(line.LineContent)).ToString();
+                    individual.FamilyIDSpouse = ParserHelper.ParseID(line.GetLineContent(4)).ToString();
                 }
                 else if (ParserHelper.Equals(tag, "FAMC"))
                 {
-                    individual.FamilyIDChild = ParserHelper.ParseID(ParserHelper.GetLineContent(line.LineContent)).ToString();
+                    individual.FamilyIDChild = ParserHelper.ParseID(line.GetLineContent(4)).ToString();
                 }
 
                 else if (ParserHelper.Equals(tag, "OBJE"))
                 {
-                    var content = ParserHelper.GetLineContent(line.LineContent);
+                    var content = line.GetLineContent(4);
                     if (content.Length > 0)
                     {
                         individual.ImageID = ParserHelper.ParseID(content).ToString();
@@ -66,7 +64,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                 }
                 else if (ParserHelper.Equals(tag, "NOTE"))
                 {
-                    var noteContent = ParserHelper.GetLineContent(lineOriginalContent);
+                    var noteContent = line.GetLineContent(4);
                     if (noteContent.Length > 0)
                     {
                         if (noteContent[0] == '@')
@@ -81,14 +79,14 @@ namespace Taumuon.GedcomParserSpan.Parser
                 }
                 else if (ParserHelper.Equals(tag, "CONT"))
                 {
-                    var contContent = ParserHelper.GetLineContent(lineOriginalContent);
+                    var contContent = line.GetLineContent(4);
                     individual.Note += Environment.NewLine + contContent.ToString();
                 }
                 else if (ParserHelper.Equals(tag, "CONC"))
                 {
                     // TODO: is GenesReunited maintaining the trailing space?
                     // If so, is this correct?
-                    var concContent = ParserHelper.GetLineContent(lineOriginalContent);
+                    var concContent = line.GetLineContent(4);
                     if (concContent.Length > 0)
                     {
                         individual.Note += concContent.ToString();
@@ -186,8 +184,7 @@ namespace Taumuon.GedcomParserSpan.Parser
             individual.FirstName = string.Empty;
             individual.FirstNames = string.Empty;
 
-            var line = gedcomLine.LineContent;
-            var content = ParserHelper.GetLineContent(line);
+            var content = gedcomLine.GetLineContent();
 
             // If there are no slashes to indicate surname, assume that the last entry is the surname
             int lastNameStart = content.IndexOf("/", StringComparison.Ordinal);

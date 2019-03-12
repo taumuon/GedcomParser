@@ -35,7 +35,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                 {
                     if (inMarriage) // TODO: should have MARR parser
                     {
-                        var date = ParserHelper.GetLineContent(line.LineContent);
+                        var date = line.GetLineContent(4);
                         if (family.Marriage == null)
                         {
                             family.Marriage = new GedcomEvent();
@@ -47,7 +47,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                 {
                     if (inMarriage) // Assume level + 1 is MARR
                     {
-                        var place = ParserHelper.GetLineContent(line.LineContent);
+                        var place = line.GetLineContent(4);
                         if (family.Marriage == null)
                         {
                             family.Marriage = new GedcomEvent();
@@ -60,7 +60,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                     // Ignore any husband and wife information in the middle of a marriage tag.
                     // Present for torture test files - and info redundant?
                     // can have e.g. "2 HUSB", with no additional info
-                    var husbContent = ParserHelper.GetLineContent(line.LineContent);
+                    var husbContent = line.GetLineContent(4);
                     if (husbContent.Length > 0)
                     {
                         family.HusbandID = ParserHelper.ParseID(husbContent).ToString();
@@ -68,7 +68,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                 }
                 else if (ParserHelper.Equals(tag, "WIFE"))
                 {
-                    var wifeContent = ParserHelper.GetLineContent(line.LineContent);
+                    var wifeContent = line.GetLineContent(4);
                     // Ignore any husband and wife information in the middle of a marriage tag.
                     // Present for torture test files - and info redundant?
                     // can have e.g. "2 HUSB", with no additional info
@@ -79,7 +79,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                 }
                 else if (ParserHelper.Equals(tag, "CHIL"))
                 {
-                    var childContent = ParserHelper.GetLineContent(line.LineContent);
+                    var childContent = line.GetLineContent(4);
                     family.ChildIDs.Add(ParserHelper.ParseID(childContent).ToString());
                 }
                 else

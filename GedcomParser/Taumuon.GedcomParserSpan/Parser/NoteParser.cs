@@ -26,14 +26,14 @@ namespace Taumuon.GedcomParserSpan.Parser
 
                 if (ParserHelper.Equals(tag, "CONT"))
                 {
-                    string contText = ParserHelper.GetLineContent(line.LineContent).ToString();
+                    string contText = line.GetLineContent(4).ToString();
                     text += Environment.NewLine + contText;
                 }
                 else if (ParserHelper.Equals(tag, "CONC"))
                 {
                     // TODO: is GenesReunited maintaining the trailing space?
                     // If so, is this correct?
-                    string concText = ParserHelper.GetLineContent(line.LineContent).ToString();
+                    string concText = line.GetLineContent(4).ToString();
                     text += concText;
                 }
             }

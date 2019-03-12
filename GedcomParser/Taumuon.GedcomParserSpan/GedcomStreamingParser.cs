@@ -52,7 +52,7 @@ namespace Taumuon.GedcomParserSpan
 
             while (newLine.LineContent.Length > 0)
             {
-                var content = ParserHelper.GetLineContent(newLine.LineContent);
+                var content = newLine.GetLineContent();
                 if (content.Length == 0)
                 {
                     var unrecognisedRawLine = lineProvider.ReadLine();
@@ -68,34 +68,30 @@ namespace Taumuon.GedcomParserSpan
                     continue;
                 }
 
-                int indexOfSpace =  newLine.LineContent.IndexOf(' ');
-                var refContent = indexOfSpace == -1
-                    ? new ReadOnlySpan<char>()
-                    : newLine.LineContent.Slice(indexOfSpace + 1, newLine.LineContent.Length - indexOfSpace - 1);
                 var unknown = false;
 
-                if (ParserHelper.Equals(refContent, "INDI"))
+                if (ParserHelper.Equals(content, "INDI"))
                 {
                     var individualParseResult = IndividualParser.Parse(newLine, lineProvider);
                     _individualCallback?.Invoke(individualParseResult.Result);
                     newLine = individualParseResult.Line;
                     lastLine = newLine;
                 }
-                else if (ParserHelper.Equals(refContent, "FAM"))
+                else if (ParserHelper.Equals(content, "FAM"))
                 {
                     var familyParseResult = FamilyParser.Parse(newLine, lineProvider);
                     _familyCallback?.Invoke(familyParseResult.Result);
                     newLine = familyParseResult.Line;
                     lastLine = newLine;
                 }
-                else if (ParserHelper.Equals(refContent, "NOTE"))
+                else if (ParserHelper.Equals(content, "NOTE"))
                 {
                     var noteParseResult = NoteParser.Parse(newLine, lineProvider);
                     _noteCallback?.Invoke(noteParseResult.Result);
                     newLine = noteParseResult.Line;
                     lastLine = newLine;
                 }
-                else if (ParserHelper.Equals(refContent, "OBJE"))
+                else if (ParserHelper.Equals(content, "OBJE"))
                 {
                     var objParserResult = ObjectParser.Parse(newLine, lineProvider);
                     _imageCallback?.Invoke(objParserResult.Result);

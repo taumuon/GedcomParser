@@ -22,6 +22,8 @@ namespace Taumuon.GedcomParserSpan.Parser
         {
             var bufferSpan = buffer.AsSpan();
 
+            ReadOnlySpan<char> newLineSpan = "\r\n".AsSpan();
+
             for (; ;)
             {
                 if (bufferPos == bufferEndPos)
@@ -48,9 +50,9 @@ namespace Taumuon.GedcomParserSpan.Parser
                     bufferPos = 1;
                 }
 
-                ReadOnlySpan<char> readChars = buffer.AsSpan().Slice(bufferPos, bufferEndPos - bufferPos);
+                ReadOnlySpan<char> readChars = bufferSpan.Slice(bufferPos, bufferEndPos - bufferPos);
 
-                int indexOfNewLine = readChars.IndexOf("\r\n".AsSpan());
+                int indexOfNewLine = readChars.IndexOf(newLineSpan, StringComparison.Ordinal);
 
                 if (indexOfNewLine != -1)
                 {
@@ -76,7 +78,7 @@ namespace Taumuon.GedcomParserSpan.Parser
             }
         }
 
-        private ReadOnlySpan<char> GetLine(ReadOnlySpan<char> input)
+        private ReadOnlySpan<char> GetLine(in ReadOnlySpan<char> input)
         {
             if (sb != null)
             {

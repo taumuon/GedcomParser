@@ -32,6 +32,25 @@ namespace Taumuon.GedcomParserSpan.Parser
             return _lineContent.Slice(0, indexOfItem);
         }
 
+        public ReadOnlySpan<char> GetLineContent()
+        {
+            int indexOfSpace = _lineContent.IndexOf(' ');
+            if (indexOfSpace == -1)
+            {
+                return new ReadOnlySpan<char>();
+            }
+            return _lineContent.Slice(indexOfSpace + 1, _lineContent.Length - indexOfSpace - 1);
+        }
+
+        public ReadOnlySpan<char> GetLineContent(int indexOfSpace)
+        {
+            if (indexOfSpace >= _lineContent.Length)
+            {
+                return new ReadOnlySpan<char>();
+            }
+            return _lineContent.Slice(indexOfSpace + 1, _lineContent.Length - indexOfSpace - 1);
+        }
+
         public int Level { get; }
         public ReadOnlySpan<char> LineContent => _lineContent;
     }

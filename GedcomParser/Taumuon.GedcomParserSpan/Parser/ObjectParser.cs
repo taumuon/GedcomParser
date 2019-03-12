@@ -26,12 +26,12 @@ namespace Taumuon.GedcomParserSpan.Parser
                 var splitLine = line.GetFirstItem();
                 if (ParserHelper.Equals(splitLine, "TITL"))
                 {
-                    var title = ParserHelper.GetLineContent(line.LineContent);
+                    var title = line.GetLineContent(4);
                     image.Title = title.ToString();
                 }
                 else if (ParserHelper.Equals(splitLine, "FILE"))
                 {
-                    var filePath = ParserHelper.GetLineContent(line.LineContent);
+                    var filePath = line.GetLineContent(4);
                     image.FilePath = filePath.ToString();
                 }
             }

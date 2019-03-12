@@ -29,7 +29,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                     // TODO: should actually put CREA and CHAN into different parser
                     if (line.Level == initialLevel + 1)
                     {
-                        var dateContent = ParserHelper.GetLineContent(line.LineContent);
+                        var dateContent = line.GetLineContent(4);
                         gedcomEvent.Date = dateContent.Length == 0 ? null : dateContent.ToString();
                     }
                 }
@@ -40,7 +40,7 @@ namespace Taumuon.GedcomParserSpan.Parser
                     // TODO: should actually put CREA and CHAN into different parser
                     if (line.Level == initialLevel + 1)
                     {
-                        var placContent = ParserHelper.GetLineContent(line.LineContent);
+                        var placContent = line.GetLineContent(4);
                         gedcomEvent.Location = placContent.Length == 0 ? null : placContent.ToString();
                     }
                 }

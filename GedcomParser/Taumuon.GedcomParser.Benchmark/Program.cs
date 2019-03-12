@@ -9,7 +9,7 @@ namespace Taumuon.GedcomParser.Benchmark
 {
     public static class BenchmarkHelper
     {
-        private const string File = @"D:\git\taumuon\programming\FamilyTree\royal92Mod.ged";
+        private const string File = @"D:\git\taumuon\programming\FamilyTree\royal92ModLarge.ged";
 
         public static StreamReader GetStreamReader(bool file)
         {
@@ -154,8 +154,8 @@ namespace Taumuon.GedcomParser.Benchmark
     {
         static void Main(string[] args)
         {
-            //var parserSummary = BenchmarkRunner.Run<BenchmarkGedcomParse>();
-            var parserSummary = BenchmarkRunner.Run<BenchmarkIndexOf>();
+            var parserSummary = BenchmarkRunner.Run<BenchmarkGedcomParse>();
+            // var parserSummary = BenchmarkRunner.Run<BenchmarkIndexOf>();
         }
     }
 
