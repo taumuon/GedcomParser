@@ -154,12 +154,12 @@ namespace Taumuon.GedcomParser.Benchmark
     {
         static void Main(string[] args)
         {
-            var parserSummary = BenchmarkRunner.Run<BenchmarkGedcomParse>();
-            // var parserSummary = BenchmarkRunner.Run<BenchmarkGedcomParse2>();
+            //var parserSummary = BenchmarkRunner.Run<BenchmarkGedcomParse>();
+            var parserSummary = BenchmarkRunner.Run<BenchmarkIndexOf>();
         }
     }
 
-    public class BenchmarkGedcomParse2
+    public class BenchmarkIndexOf
     {
         private const string SmallString = "NAME JAMES BROWN";
         private const string MedString = "SOMELONGISHTEXTPRIORTOASPACE TEXTAFTERTHESPACE";
