@@ -13,7 +13,7 @@ namespace Taumuon.GedcomParserSpan.Parser
             _streamReader = streamReader;
         }
 
-        char[] buffer = new char[1024];
+        char[] buffer = new char[2048];
         int bufferPos;
         int bufferEndPos;
         StringBuilder sb = null;
@@ -21,8 +21,6 @@ namespace Taumuon.GedcomParserSpan.Parser
         public ReadOnlySpan<char> ReadLine()
         {
             var bufferSpan = buffer.AsSpan();
-
-            ReadOnlySpan<char> newLineSpan = "\r\n".AsSpan();
 
             for (; ;)
             {
@@ -52,16 +50,12 @@ namespace Taumuon.GedcomParserSpan.Parser
 
                 ReadOnlySpan<char> readChars = bufferSpan.Slice(bufferPos, bufferEndPos - bufferPos);
 
-                int indexOfNewLine = readChars.IndexOf(newLineSpan, StringComparison.Ordinal);
+                int indexOfNewLine = readChars.IndexOf('\r');
 
                 if (indexOfNewLine != -1)
                 {
-                    bufferPos += indexOfNewLine + 2;
-                    return GetLine(readChars.Slice(0, indexOfNewLine));
-                }
-                else if ((indexOfNewLine = readChars.IndexOf('\r')) != -1)
-                {
-                    bufferPos += indexOfNewLine + 1;
+                    bool isRN = readChars.Length > (indexOfNewLine + 1) && readChars[indexOfNewLine + 1] == '\n';
+                    bufferPos += isRN ? indexOfNewLine + 2 : indexOfNewLine + 1;
                     return GetLine(readChars.Slice(0, indexOfNewLine));
                 }
                 else if ((indexOfNewLine = readChars.IndexOf('\n')) != -1)

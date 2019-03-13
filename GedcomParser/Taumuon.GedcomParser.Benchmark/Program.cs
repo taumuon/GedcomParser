@@ -116,7 +116,7 @@ namespace Taumuon.GedcomParser.Benchmark
         {
             int itemCount = 0;
 
-            Taumuon.GedcomParserSpan.GedcomStreamingParser gedcomStreamingParser = new Taumuon.GedcomParserSpan.GedcomStreamingParser(
+            Taumuon.GedcomParserSpan.GedcomStreamingParser gedcomStreamingParserSpan = new Taumuon.GedcomParserSpan.GedcomStreamingParser(
                 null,
                 individual => itemCount++,
                 family => itemCount++,
@@ -124,7 +124,7 @@ namespace Taumuon.GedcomParser.Benchmark
                 note => itemCount++);
             using (var fs = BenchmarkHelper.GetStreamReader(File))
             {
-                gedcomStreamingParser.Parse(new LineProvider(fs));
+                gedcomStreamingParserSpan.Parse(new LineProvider(fs));
             }
 
             return itemCount;
@@ -135,7 +135,7 @@ namespace Taumuon.GedcomParser.Benchmark
         {
             int itemCount = 0;
 
-            GedcomStreamingParser gedcomStreamingParser = new GedcomStreamingParser(
+            Taumuon.GedcomParser.GedcomStreamingParser gedcomStreamingParser = new Taumuon.GedcomParser.GedcomStreamingParser(
                 null,
                 individual => itemCount++,
                 family => itemCount++,

@@ -5,7 +5,7 @@ namespace Taumuon.GedcomParser.Console
 {
     class Program
     {
-        private const string File = @"D:\git\taumuon\programming\FamilyTree\royal92ModLarge.ged";
+        private const string File = @"D:\git\taumuon\programming\FamilyTree\royal92ModHuge.ged";
 
         public static StreamReader GetStream()
         {
@@ -44,26 +44,12 @@ namespace Taumuon.GedcomParser.Console
         {
             System.Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            var spanResult = FileImportSpan();
-            var nonSpanResult = FileImport();
+            var result = FileImportSpan(); /*FileImport();*/
 
-            System.Console.WriteLine("Individual count span:{0} non-span:{1}", spanResult.Individuals.Count, nonSpanResult.Individuals.Count);
-            System.Console.WriteLine("Family count span:{0} non-span:{1}", spanResult.Families.Count, nonSpanResult.Families.Count);
-
-            var spanNameCount = spanResult.Individuals.GroupBy(x => x.LastName)
-                .ToDictionary(x => x.Key, x => x.Count());
-            var nonSpanNameCount = nonSpanResult.Individuals.GroupBy(x => x.LastName)
+            var nameCount = result.Individuals.GroupBy(x => x.LastName)
                 .ToDictionary(x => x.Key, x => x.Count());
 
-            foreach(var individual in spanNameCount)
-            {
-                if (nonSpanNameCount[individual.Key] != individual.Value)
-                {
-                    System.Console.WriteLine($"Mismatch for {individual.Key} {individual.Value} {nonSpanNameCount.Values}");
-                }
-            }
-
-            foreach (var individual in spanNameCount.OrderByDescending(x => x.Value).Take(20))
+            foreach (var individual in nameCount.OrderByDescending(x => x.Value).Take(20))
             {
                 System.Console.WriteLine($"{individual.Key} {individual.Value}");
             }
